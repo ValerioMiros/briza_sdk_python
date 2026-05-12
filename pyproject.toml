@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "briza-sdk"
+dynamic = ["version"]
+description = "BrizaPay Gateway — official Python SDK"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "BrizaPay", email = "dev@brizapay.com" },
+]
+keywords = [
+  "brizapay", "payments", "payment-gateway", "sdk",
+  "mexico", "latam", "fintech", "invoicing", "subscriptions",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Office/Business :: Financial",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.10"
+dependencies = ["requests>=2.28"]
+
+[project.optional-dependencies]
+flask   = ["flask>=2.0"]
+fastapi = ["fastapi>=0.100", "uvicorn[standard]>=0.20"]
+dev     = ["pytest>=7.0"]
+
+[project.urls]
+Homepage      = "https://brizapay.com"
+Repository    = "https://github.com/brizapay/briza-sdk-python"
+Documentation = "https://docs.brizapay.com/sdk/python"
+"Bug Tracker" = "https://github.com/brizapay/briza-sdk-python/issues"
+
+[tool.setuptools.dynamic]
+version = {attr = "briza_sdk.__version__"}
+
+[tool.setuptools.packages.find]
+where   = ["."]
+include = ["briza_sdk*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
